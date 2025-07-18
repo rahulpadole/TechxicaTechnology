@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Orbitron:wght@400;600&display=swap');
+
+/* Core Reset & Typography */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Outfit", sans-serif;
+}
+
+body {
+  font-family: 'Space Grotesk', sans-serif;
+  background: transparent;
+  color: #D1D1F7;
+  min-height: 100vh;
+}
+
+/* Text Hierarchy */
+h1, h2, h3, h4, h5, h6 {
+  color: #E0F7FF;
+  text-shadow: 0 0 5px rgba(102, 217, 239, 0.5);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+}
+
+p {
+  color: inherit;
+  line-height: 1.6;
+}
+
+::selection {
+  background: #FF66B2;
+  color: #fff;
+}
+
+/* Interactive Elements */
+a {
+  color: #E0F7FF;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+a:hover {
+  color: #FF66B2;
+  text-shadow: 0 0 5px rgba(255, 102, 178, 0.7);
+}
+
+/* Button System */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.875rem 1.5rem;
+  font-size: 1rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+}
+
+.btn-primary {
+  background: #E0F7FF;
+  color: #1A1A3B;
+  border-color: #66D9EF;
+  box-shadow: 0 0 10px rgba(102, 217, 239, 0.5);
+}
+
+.btn-primary:hover {
+  background: #FF66B2;
+  color: #fff;
+  box-shadow: 0 0 15px rgba(255, 102, 178, 0.7);
+}
+
+.btn-dark {
+  background: #A78BFA;
+  color: #fff;
+  border-color: #A78BFA;
+  box-shadow: 0 0 10px rgba(167, 139, 250, 0.5);
+}
+
+.btn-dark:hover {
+  background: #66D9EF;
+  box-shadow: 0 0 15px rgba(102, 217, 239, 0.7);
+}
+
+.btn-icon {
+  width: 1.25rem;
+  margin-left: 0.625rem;
+}
+
+/* Form Controls */
+input,
+textarea {
+  background: rgba(30, 30, 74, 0.8);
+  border: 1px solid #66D9EF;
+  color: #E0F7FF;
+  border-radius: 0.3125rem;
+  padding: 0.625rem;
+  transition: all 0.3s ease;
+}
+
+input:focus,
+textarea:focus {
+  border-color: #FF66B2;
+  box-shadow: 0 0 10px rgba(255, 102, 178, 0.5);
+  outline: none;
+}
+
+/* Layout Utilities */
+.container {
+  width: 100%;
+  padding: 0;
+}
+
+.scroll-margin {
+  scroll-margin-top: 5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 87.5rem) {
+  .container {
+    padding: 0 5%;
+  }
+}
+
+@media (max-width: 48rem) {
+  .scroll-margin {
+    scroll-margin-top: 3.75rem;
+  }
+}

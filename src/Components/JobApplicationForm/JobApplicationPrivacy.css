@@ -1,0 +1,94 @@
+.job-app-privacy-container {
+  max-width: 900px;
+  margin: 5rem auto;
+  padding: 0 1.5rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  line-height: 1.6;
+  color: #333;
+}
+
+.privacy-header {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.privacy-header h1 {
+  color: #212EA0;
+  margin-bottom: 0.5rem;
+}
+
+.privacy-header p {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.privacy-content section {
+  margin-bottom: 2rem;
+}
+
+.privacy-content h2 {
+  color: #212EA0;
+  font-size: 1.3rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #eee;
+}
+
+.privacy-content ul {
+  margin: 1rem 0;
+  padding-left: 1.5rem;
+}
+
+.privacy-content li {
+  margin-bottom: 0.5rem;
+}
+
+.contact-info {
+  background: #f9f9f9;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin: 2rem 0;
+}
+
+.contact-info h3 {
+  color: #212EA0;
+  margin-bottom: 1rem;
+}
+
+.navigation-links {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+
+.back-link, .main-policy-link {
+  color: #212EA0;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  border: 1px solid #212EA0;
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.back-link:hover, .main-policy-link:hover {
+  background: #212EA0;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .job-app-privacy-container {
+    padding: 0 1rem;
+  }
+  
+  .navigation-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .privacy-header h1 {
+    font-size: 1.5rem;
+  }
+}

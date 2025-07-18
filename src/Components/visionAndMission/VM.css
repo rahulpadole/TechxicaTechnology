@@ -1,0 +1,240 @@
+/* VM.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Lighter Cyberpunk Color Palette */
+  --electric-blue: #00f7ff;
+  --neon-green: #00ffb3;
+  --violet: #a86bff;
+  --hot-pink: #ff2d9e;
+  --cyber-yellow: #fff200;
+  
+  /* Base Colors */
+  --dark-bg: rgba(31, 31, 46, 0.9);
+  --darker-bg: rgba(20, 20, 40, 0.95);
+  --light-text: #f0f9ff;
+  
+  /* Effects */
+  --blue-glow: 0 0 10px rgba(0, 247, 255, 0.7);
+  --green-glow: 0 0 10px rgba(0, 255, 179, 0.7);
+  --transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* ===== Base Styles ===== */
+.vm-container {
+  
+  max-width: 1300px;
+  margin: 2rem auto;
+  padding: 0 2rem;
+  font-family: 'Orbitron', sans-serif;
+}
+
+/* ===== Cards Container ===== */
+.vm-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 4rem;
+  align-items: stretch;
+  text-align: justify;
+}
+
+/* ===== Card Styles ===== */
+.vm-card {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--dark-bg);
+  backdrop-filter: blur(0px);
+  border: 1px solid var(--electric-blue);
+  box-shadow: 
+    0 0 25px rgba(0, 247, 255, 0.3),
+    inset 0 0 15px rgba(0, 247, 255, 0.2);
+  display: flex;
+  flex-direction: column;
+  min-height: 350px;
+  transition: var(--transition);
+  padding: 2px;
+}
+
+.mission-card {
+  border-color: var(--neon-green);
+  box-shadow: 
+    0 0 25px rgba(0, 255, 179, 0.3),
+    inset 0 0 15px rgba(0, 255, 179, 0.2);
+}
+
+.vm-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--electric-blue), 
+    transparent);
+}
+
+.mission-card::before {
+  background: linear-gradient(90deg, 
+    transparent, 
+    var(--neon-green), 
+    transparent);
+}
+
+.vm-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 
+    0 15px 40px rgba(0, 247, 255, 0.5),
+    inset 0 0 20px rgba(0, 247, 255, 0.3);
+}
+
+.mission-card:hover {
+  box-shadow: 
+    0 15px 40px rgba(0, 255, 179, 0.5),
+    inset 0 0 20px rgba(0, 255, 179, 0.3);
+}
+
+/* ===== Label Styles ===== */
+.vm-card-label {
+  position: relative;
+  margin: 2.5rem auto 1.5rem;
+  display: inline-block;
+  background: rgba(20, 20, 40, 0.9);
+  padding: 1rem 2.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--electric-blue);
+  font-family: 'Orbitron', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  border: 1px solid var(--electric-blue);
+  box-shadow: var(--blue-glow);
+  text-shadow: var(--blue-glow);
+  transition: var(--transition);
+  z-index: 2;
+}
+
+.mission-card .vm-card-label {
+  color: var(--neon-green);
+  border-color: var(--neon-green);
+  box-shadow: var(--green-glow);
+  text-shadow: var(--green-glow);
+}
+
+.vm-card-label:hover {
+  transform: scale(1.05) translateY(-3px);
+}
+
+/* ===== Card Content ===== */
+.vm-card-content {
+  padding: 0 2.5rem 2.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.vm-card-content p {
+  font-size: 1.2rem;
+  line-height: 1.8;
+  color: var(--light-text);
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* ===== Icon Styles ===== */
+.vm-card-icon {
+  font-size: 3.5rem;
+  margin-top: auto;
+  text-align: right;
+  opacity: 0.9;
+  transition: var(--transition);
+  filter: drop-shadow(0 0 8px var(--electric-blue));
+}
+
+.mission-card .vm-card-icon {
+  filter: drop-shadow(0 0 8px var(--neon-green));
+}
+
+.vm-card-icon:hover {
+  transform: scale(1.2);
+  opacity: 1;
+}
+
+/* ===== Animations ===== */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px var(--electric-blue);
+  }
+  50% {
+    box-shadow: 0 0 20px var(--electric-blue);
+  }
+  100% {
+    box-shadow: 0 0 10px var(--electric-blue);
+  }
+}
+
+/* ===== Responsive Design ===== */
+@media (max-width: 1200px) {
+  .vm-cards-container {
+    gap: 3rem;
+  }
+}
+
+@media (max-width: 1024px) {
+  .vm-cards-container {
+    grid-template-columns: 1fr;
+    max-width: 800px;
+  }
+}
+
+@media (max-width: 768px) {
+  .vm-container {
+    padding: 0 1.5rem;
+    margin: 4rem auto;
+  }
+
+  .vm-card {
+    min-height: 300px;
+  }
+
+  .vm-card-content {
+    padding: 0 2rem 2rem;
+  }
+
+  .vm-card-label {
+    font-size: 1.3rem;
+    padding: 0.8rem 2rem;
+  }
+
+  .vm-card-content p {
+    font-size: 1.1rem;
+  }
+  
+  .vm-card-icon {
+    font-size: 3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .vm-card-label {
+    font-size: 1.1rem;
+    padding: 0.7rem 1.5rem;
+    letter-spacing: 3px;
+    margin: 2rem auto 1rem;
+  }
+  
+  .vm-card-content {
+    padding: 0 1.5rem 1.5rem;
+  }
+  
+  .vm-card-content p {
+    font-size: 1rem;
+  }
+  
+  .vm-card-icon {
+    font-size: 2.5rem;
+  }
+}

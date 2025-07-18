@@ -1,0 +1,163 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600&display=swap');
+
+:root {
+  --cyberpunk-blue: #49e1ff; /* Neon cyan */
+  --cyberpunk-pink: #FF66B2; /* Neon pink */
+  --cyberpunk-purple: #65f5ff; /* Light purple */
+  --cyberpunk-light-5: #47ffc5; /* Light cyan */
+  --cyberpunk-dark: #1e1e4a; /* Matches index.html background */
+  --cyberpunk-dark-2: #2a2a6e; /* Slightly lighter purple */
+  --neon-glow: 0 0 15px var(--cyberpunk-red), 
+               0 0 10px var(--cyberpunk-sky-blue), 
+               0 0 15px var(--cyberpunk-blue);
+  --neon-glow-pink: 0 0 5px var(--cyberpunk-pink  ),
+                    0 0 10px var(--cyberpunk-pink),
+                    0 0 15px var(--cyberpunk-pink);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Program Section Container */
+#Program.program-section {
+  margin: 0;
+  padding: 3rem 1.5rem;
+  position: relative;
+  overflow: hidden;
+  background: var(--cyberpunk-dark); /* Fallback background */
+}
+
+/* Title Wrapper */
+.title {
+  background-color: #4343c57e;
+  text-align: center;
+  max-width: 1200px;
+  border-radius: 10px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Main Heading */
+.title h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--cyberpunk-light-5);
+  text-shadow: var(--neon-glow);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin: 0 0 1rem 0;
+  position: relative;
+  display: inline-block;
+  line-height: 1.2;
+  transition: var(--transition); /* Added for smooth hover effect */
+}
+
+.title h1:hover {
+  transform: scale(1.05); /* Added subtle hover effect to replace glitch */
+  text-shadow: 0 0 10px var(--cyberpunk-blue), 
+               0 0 15px var(--cyberpunk-blue); /* Enhanced glow on hover */
+}
+
+.title h1::after {
+  content: '';
+  position: absolute;
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(90deg, 
+    var(--cyberpunk-blue),
+    var(--cyberpunk-pink),
+    var(--cyberpunk-purple));
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  box-shadow: 0 0 10px var(--cyberpunk-pink);
+}
+
+/* Subheading */
+.title h2 {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: var(--cyberpunk-light);
+  line-height: 1.5;
+  margin: 1.5rem auto 0;
+  max-width: 800px;
+  letter-spacing: 1px;
+  position: relative;
+}
+
+.title h2::before {
+  content: '[';
+  color: var(--cyberpunk-pink);
+  margin-right: 0.5rem;
+}
+
+.title h2::after {
+  content: ']';
+  color: var(--cyberpunk-pink);
+  margin-left: 0.5rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+  .title h1 {
+    font-size: 2.5rem;
+  }
+  
+  .title h2 {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 768px) {
+  #Program.program-section {
+    padding: 2rem 1rem;
+  }
+  
+  .title h1 {
+    font-size: 2rem;
+  }
+  
+  .title h2 {
+    font-size: 1.1rem;
+  }
+  
+  .title h1::after {
+    width: 70%;
+    height: 2px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title h1 {
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+  }
+  
+  .title h1::after {
+    width: 80%;
+    bottom: -5px;
+  }
+  
+  .title h2 {
+    font-size: 1rem;
+  }
+}
+
+/* Entrance Animation */
+@keyframes fadeInExpand {
+  from { 
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(2px);
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+#Program.program-section {
+  animation: fadeInExpand 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}

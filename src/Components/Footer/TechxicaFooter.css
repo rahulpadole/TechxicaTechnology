@@ -1,0 +1,317 @@
+/* TechxicaFooter.css - Crisp Text Edition */
+:root {
+  /* Cyberpunk Color Palette */
+  --electric-blue: #00f7ff;
+  --neon-green: #00ffb3;
+  --hot-pink: #ff2d9e;
+  --cyber-yellow: #fff200;
+  --violet: #a86bff;
+  --dark-bg: #0d0221;
+  --darker-bg: #070710;
+  --light-text: #e2f3f4;
+  
+  /* Effects */
+  --blue-glow: 0 0 10px rgba(0, 247, 255, 0.7);
+  --green-glow: 0 0 10px rgba(0, 255, 179, 0.7);
+  --pink-glow: 0 0 10px rgba(255, 45, 158, 0.7);
+  --yellow-glow: 0 0 10px rgba(255, 242, 0, 0.7);
+  --violet-glow: 0 0 10px rgba(168, 107, 255, 0.7);
+  
+  /* Gradients */
+  --gradient-primary: linear-gradient(135deg, var(--electric-blue) 0%, var(--violet) 50%, var(--hot-pink) 100%);
+  --gradient-secondary: linear-gradient(135deg, var(--neon-green) 0%, var(--electric-blue) 100%);
+  
+  /* Transitions */
+  --transition: all 0.3s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Base Styles */
+.cyber-footer {
+  /* margin-top: 2rem; */
+  background: var(--dark-bg);
+  color: var(--light-text);
+  font-family: 'Orbitron', 'Rajdhani', sans-serif;
+  position: relative;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+.cyber-footer__gradient-bg {
+  background: linear-gradient(to bottom, rgba(13, 2, 33, 0.9) 0%, rgba(26, 26, 46, 0.95) 100%);
+  padding: 30px 0 15px;
+  position: relative;
+}
+
+.cyber-footer__gradient-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: var(--gradient-primary);
+  box-shadow: var(--blue-glow);
+}
+
+/* Container */
+.cyber-footer__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Grid Layout */
+.cyber-footer__content {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr;
+  gap: 30px;
+  margin-bottom: 25px;
+}
+
+/* Brand Section - Crisp Text */
+.cyber-footer__logo {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.cyber-footer__logo-text {
+  color: var(--electric-blue);
+  text-shadow: 
+    0 0 8px var(--electric-blue),
+    0 0 16px rgba(0, 247, 255, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.cyber-footer__logo-underline {
+  display: block;
+  height: 2px;
+  width: 100%;
+  background: var(--gradient-primary);
+  margin-top: 5px;
+  box-shadow: var(--blue-glow);
+}
+
+.cyber-footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.cyber-footer__social-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  color: var(--light-text);
+  font-size: 1rem;
+  transition: var(--transition);
+  border: 1px solid var(--electric-blue);
+}
+
+.cyber-footer__social-icon:hover {
+  background: var(--electric-blue);
+  color: var(--dark-bg);
+  transform: translateY(-3px);
+  box-shadow: var(--blue-glow);
+}
+
+/* Contact Section */
+.cyber-footer__contacts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.cyber-footer__contact-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+}
+
+.cyber-footer__contact-link {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  color: var(--light-text);
+  text-decoration: none;
+  transition: var(--transition);
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.cyber-footer__contact-icon {
+  color: var(--electric-blue);
+  font-size: 1rem;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.cyber-footer__contact-link:hover {
+  color: var(--electric-blue);
+  transform: translateX(5px);
+}
+
+/* Newsletter Section */
+.cyber-footer__newsletter-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+  color: var(--electric-blue);
+  text-transform: uppercase;
+}
+
+.cyber-footer__form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.cyber-footer__input-group {
+  position: relative;
+  display: flex;
+}
+
+.cyber-footer__input {
+  flex: 1;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid var(--electric-blue);
+  color: var(--light-text);
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 0.9rem;
+  transition: var(--transition);
+}
+
+.cyber-footer__input:focus {
+  outline: none;
+  border-color: var(--hot-pink);
+  box-shadow: var(--pink-glow);
+}
+
+.cyber-footer__input::placeholder {
+  color: rgba(226, 243, 244, 0.6);
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.cyber-footer__submit {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  bottom: 5px;
+  width: 36px;
+  background: var(--gradient-primary);
+  color: var(--dark-bg);
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: var(--transition);
+}
+
+.cyber-footer__submit:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--pink-glow);
+}
+
+.cyber-footer__submit-icon {
+  font-size: 0.9rem;
+}
+
+.cyber-footer__success {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--neon-green);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+}
+
+.cyber-footer__success-icon {
+  font-size: 1rem;
+}
+
+.cyber-footer__error {
+  color: var(--hot-pink);
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+/* Legal Section */
+.cyber-footer__legal {
+  border-top: 1px solid rgba(0, 247, 255, 0.2);
+  padding-top: 20px;
+  text-align: center;
+}
+
+.cyber-footer__copyright {
+  font-size: 0.8rem;
+  color: rgba(226, 243, 244, 0.7);
+  letter-spacing: 0.5px;
+}
+
+.cyber-footer__legal-link {
+  color: var(--electric-blue);
+  text-decoration: none;
+  transition: var(--transition);
+}
+
+.cyber-footer__legal-link:hover {
+  color: var(--hot-pink);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .cyber-footer__content {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .cyber-footer__brand {
+    grid-column: span 2;
+    text-align: center;
+  }
+
+  .cyber-footer__social {
+    justify-content: center;
+  }
+
+  .cyber-footer__contacts {
+    grid-column: span 2;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .cyber-footer__content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+
+  .cyber-footer__brand {
+    grid-column: span 1;
+  }
+
+  .cyber-footer__contacts {
+    grid-column: span 1;
+  }
+
+  .cyber-footer__gradient-bg {
+    padding: 30px 0 15px;
+  }
+
+  .cyber-footer__logo {
+    font-size: 1.8rem;
+  }
+}

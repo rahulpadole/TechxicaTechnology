@@ -1,0 +1,135 @@
+#brand-partner {
+  background: linear-gradient(135deg, #f5f9ff, #e6f0ff);
+  padding: 100px 20px;
+  text-align: center;
+}
+
+.section-header {
+  margin-bottom: 60px;
+}
+
+.section-title {
+  font-size: 2.8rem;
+  color: #001f3f;
+  margin-bottom: 15px;
+  font-weight: 700;
+  position: relative;
+  display: inline-block;
+}
+
+.title-underline {
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, #004080, #0066cc);
+  margin: 0 auto 20px;
+  border-radius: 2px;
+}
+
+.brand-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.logo-section {
+  flex: 0 0 auto;
+  padding: 25px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.logo-section:hover {
+  transform: scale(1.08) rotate(5deg);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+}
+
+.brand-logo {
+  width: 180px;
+  height: 180px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.info-section {
+  text-align: center;
+  max-width: 800px;
+}
+
+.info-section h2 {
+  font-size: 2.6rem;
+  color: #001f3f;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.info-section h4 {
+  font-size: 1.5rem;
+  color: #0066cc;
+  margin-bottom: 25px;
+  font-weight: 500;
+}
+
+.info-section p {
+  font-size: 1.1rem;
+  color: #555;
+  line-height: 1.8;
+  margin-bottom: 35px;
+}
+
+.visit-button {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, #004080, #0066cc);
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 64, 128, 0.3);
+  border: none;
+  cursor: pointer;
+}
+
+.visit-button:hover {
+  background: linear-gradient(135deg, #0066cc, #004080);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 64, 128, 0.4);
+}
+
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .brand-container {
+    flex-direction: row;
+    gap: 80px;
+    padding: 40px;
+  }
+  .info-section {
+    text-align: left;
+  }
+  .section-title {
+    font-size: 3.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title {
+    font-size: 2.2rem;
+  }
+  .brand-logo {
+    width: 140px;
+    height: 140px;
+  }
+  .info-section h2 {
+    font-size: 2rem;
+  }
+}

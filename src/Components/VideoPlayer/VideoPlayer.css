@@ -1,0 +1,80 @@
+:root {
+  /* Gradient from About.css and Navbar.css (toned down) */
+  --gradient-secondary: linear-gradient(135deg, rgba(226, 26, 132, 0.6), rgba(201, 40, 158, 0.6), rgba(142, 45, 226, 0.6), rgba(93, 135, 255, 0.6), rgba(52, 152, 219, 0.6));
+  --gradient-dark: linear-gradient(to bottom, rgba(13, 2, 33, 0.9) 0%, rgba(31, 31, 46, 0.9) 100%);
+
+  /* Base Colors from Navbar.css */
+  --light-text: #f0f9ff;
+
+  /* Effects */
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent with About.css */
+  --transition: all 0.3s ease; /* Smooth, accessible transitions */
+  --border-radius: 4px; /* Consistent with About.css */
+}
+
+.video-player {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8); /* Reduced opacity from 0.9 */
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 1;
+  transform: scale(1);
+  transition: var(--transition);
+}
+
+.video-player.hide {
+  opacity: 0;
+  transform: scale(0.95); /* Subtle scale-down for exit */
+  visibility: hidden; /* Replaces display: none */
+}
+
+.video-player video {
+  width: 85%; /* Reduced from 90% */
+  max-width: 800px; /* Reduced from 900px */
+  height: auto;
+  border: 2px solid var(--light-text); /* Reduced from 4px, use light-text */
+  border-radius: var(--border-radius); /* Aligned with About.css */
+  box-shadow: var(--shadow); /* Subtle shadow */
+  transition: var(--transition);
+  animation: videoFadeIn 0.5s ease-out; /* Load animation */
+}
+
+.video-player video:hover {
+  transform: scale(1.02); /* Subtle "active" hover effect */
+  border-color: var(--gradient-secondary); /* Muted gradient for active effect */
+}
+
+/* Animations */
+@keyframes videoFadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .video-player video {
+    width: 90%;
+    max-width: 600px; /* Reduced for smaller screens */
+    border: 1.5px solid var(--light-text); /* Further reduced */
+  }
+}
+
+@media (max-width: 480px) {
+  .video-player video {
+    width: 95%;
+    max-width: 400px; /* Further reduced */
+    border: 1px solid var(--light-text); /* Minimal border */
+  }
+}

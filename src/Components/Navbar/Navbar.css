@@ -1,0 +1,334 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Gradient Color Palette (aligned with About.css) */
+  --gradient-primary: linear-gradient(135deg, #00f7ff 0%, #a86bff 50%, #ff2d9e 100%);
+  --gradient-secondary: linear-gradient(135deg, rgb(242, 76, 82), rgba(201, 40, 158, 0.6), rgba(142, 45, 226, 0.6), rgba(93, 135, 255, 0.6), rgba(52, 152, 219, 0.6));
+  --gradient-secondary-reverse: linear-gradient(315deg, rgba(226, 26, 132, 0.6), rgba(201, 40, 158, 0.6), rgba(142, 45, 226, 0.6), rgba(93, 135, 255, 0.6), rgba(52, 152, 219, 0.6));
+  --gradient-dark: linear-gradient(to bottom, rgba(13, 2, 33, 0.9) 0%, rgba(31, 31, 46, 0.9) 100%);
+  
+  /* Base Colors */
+  --dark-bg: rgba(31, 31, 46, 0.9);
+  --light-text: #f0f9ff;
+  --dark-text: #0d0221;
+  
+  /* Effects */
+  --shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Consistent with About.css */
+  --blue-glow: 0 0 4px rgba(0, 247, 255, 0.4); /* Reduced intensity */
+  --green-glow: 0 0 4px rgba(0, 255, 179, 0.4); /* Reduced intensity */
+  --pink-glow: 0 0 4px rgba(255, 45, 158, 0.4); /* Reduced intensity */
+  
+  /* Transitions */
+  --transition: all 0.3s ease;
+  --transition-slow: all 0.5s ease;
+}
+
+/* ===== BASE NAVBAR ===== */
+.cyber-nav {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px; /* Reduced from 60px */
+  z-index: 1000;
+  transition: var(--transition-slow);
+}
+
+.cyber-nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1450px; /* Aligned with About.css */
+  margin: 0 auto;
+  height: 100%;
+  padding: 0; /* Reduced from 0 2rem */
+}
+
+/* ===== HERO PAGE STYLES ===== */
+.cyber-nav.at-hero:not(.scrolled) {
+  background: transparent;
+  border-bottom: 1px solid transparent;
+}
+
+.cyber-nav.at-hero:not(.scrolled) .cyber-nav-link {
+  color: var(--light-text);
+}
+
+.cyber-nav.at-hero:not(.scrolled) .cyber-menu-toggle {
+  color: var(--light-text);
+}
+
+/* ===== GRADIENT BORDER ===== */
+.cyber-nav::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 1.5px; /* Reduced from 2px */
+  background: var(--gradient-secondary); /* Changed to muted gradient */
+  opacity: 0;
+  transition: var(--transition-slow);
+}
+
+.cyber-nav.at-hero:not(.scrolled)::after {
+  opacity: 0.4; /* Reduced from 0.5 */
+}
+
+/* ===== SCROLLED STATE ===== */
+.cyber-nav.scrolled {
+  background: var(--gradient-dark);
+  backdrop-filter: blur(8px); /* Reduced from 10px */
+  height: 60px; /* Reduced from 50px */
+  box-shadow: var(--shadow); /* Aligned with About.css */
+}
+
+.cyber-nav.scrolled::after {
+  opacity: 1;
+  box-shadow: var(--blue-glow);
+}
+
+/* ===== LOGO STYLES ===== */
+.cyber-nav-logo {
+  border-width: 1px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, rgba(104, 13, 86, 0.818), rgb(41, 18, 125));
+  height: 40px; /* Adjust this value for default size */
+  width: auto; /* Maintains aspect ratio */
+  transition: var(--transition);
+  filter: brightness(1) drop-shadow(0 0 2px rgba(0, 247, 255, 0.3));
+}
+
+/* Scrolled state */
+.cyber-nav.scrolled .cyber-nav-logo {
+  height: 40px; /* Slightly smaller when scrolled */
+}
+
+/* Mobile view */
+@media (max-width: 768px) {
+  .cyber-nav-logo {
+    height: 36px; /* Slightly smaller on mobile */
+  }
+  
+  .cyber-nav.scrolled .cyber-nav-logo {
+    height: 34px;
+  }
+}
+
+/* ===== NAVIGATION MENU ===== */
+.cyber-nav-menu {
+  display: flex;
+  height: 100%;
+}
+
+.cyber-nav-menu-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem; /* Reduced from 1rem */
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.cyber-nav-link {
+  color: var(--light-text);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.5px; /* Reduced from 1px */
+  text-transform: uppercase;
+  position: relative;
+  padding: 0 0.4rem; /* Reduced from 0 0.5rem */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  transition: var(--transition);
+  text-decoration: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 0.8rem; /* Reduced from 0.85rem */
+  animation: activeHeading 0.8s ease-out; /* Added for active effect */
+}
+
+.cyber-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 6px; /* Reduced from 8px */
+  left: 0;
+  width: 0;
+  height: 1.5px; /* Reduced from 2px */
+  background: var(--gradient-secondary); /* Changed to muted gradient */
+  transition: var(--transition);
+}
+
+.cyber-nav-link:hover::after {
+  width: 100%;
+}
+
+.cyber-nav-link:hover {
+  background: var(--gradient-secondary);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-color: rgba(142, 45, 226, 0.15); /* Subtle fade */
+}
+
+/* ===== CONTACT BUTTON ===== */
+.cyber-nav-button {
+  background: transparent;
+  color: var(--light-text);
+  padding: 0.3rem 0.8rem; /* Reduced from 0.35rem 1rem */
+  border: 1px solid var(--light-text);
+  border-radius: 4px; /* Aligned with About.css */
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 600;
+  font-size: 0.8rem; /* Reduced from 0.85rem */
+  letter-spacing: 0.5px; /* Reduced from 1px */
+  text-transform: uppercase;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  animation: activeHeading 0.8s ease-out; /* Added for active effect */
+}
+
+.cyber-nav-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--gradient-secondary); /* Changed to muted gradient */
+  z-index: -1;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.cyber-nav.scrolled .cyber-nav-button,
+.cyber-nav-button:hover {
+  color: var(--dark-text);
+  border-color: transparent;
+}
+
+.cyber-nav.scrolled .cyber-nav-button::before,
+.cyber-nav-button:hover::before {
+  opacity: 1;
+}
+
+.cyber-nav-button:hover {
+  transform: scale(1.05); /* Subtle scale instead of translateY */
+}
+
+/* ===== MOBILE MENU TOGGLE ===== */
+.cyber-menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--light-text);
+  z-index: 1100;
+  padding: 0.4rem; /* Reduced from 0.5rem */
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.cyber-menu-toggle:hover {
+  color: #5D87FF; /* Muted color from gradient-secondary */
+}
+
+/* ===== MOBILE STYLES ===== */
+@media (max-width: 768px) {
+  .cyber-menu-toggle {
+    display: block;
+  }
+
+  .cyber-nav-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: var(--gradient-dark);
+    backdrop-filter: blur(8px); /* Reduced from 10px */
+    flex-direction: column;
+    justify-content: center;
+    clip-path: circle(0% at 90% 5%);
+    transition: clip-path 0.6s ease; /* Reduced from 0.8s */
+    pointer-events: none;
+  }
+
+  .cyber-nav-menu.open {
+    clip-path: circle(150% at 90% 5%);
+    pointer-events: all;
+  }
+
+  .cyber-nav-menu-inner {
+    flex-direction: column;
+    gap: 1.2rem; /* Reduced from 1.5rem */
+    text-align: center;
+    height: auto;
+    padding: 4rem 0; /* Reduced from 6rem */
+  }
+
+  .cyber-nav-link {
+    font-size: 1rem; /* Reduced from 1.1rem */
+    padding: 0.4rem 0.8rem; /* Reduced from 0.5rem 1rem */
+    height: auto;
+    justify-content: center;
+  }
+
+  .cyber-nav-link::after {
+    bottom: 4px; /* Reduced from 5px */
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+  }
+
+  .cyber-nav-link:hover::after {
+    width: 80%;
+  }
+
+  .cyber-nav-button {
+    margin-top: 0.8rem; /* Reduced from 1rem */
+    padding: 0.5rem 1.2rem; /* Reduced from 0.6rem 1.6rem */
+    font-size: 0.9rem; /* Reduced from 1rem */
+  }
+
+  .cyber-nav.at-hero:not(.scrolled) .cyber-nav-menu {
+    background: rgba(13, 2, 33, 0.95); /* Reduced opacity */
+  }
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes activeHeading {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes cyber-fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.98); /* Changed to scale for simplicity */
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.cyber-nav-menu.open .cyber-nav-link {
+  animation: cyber-fadeIn 0.3s ease forwards; /* Reduced from 0.4s */
+}
+
+.cyber-nav-menu.open .cyber-nav-link:nth-child(1) { animation-delay: 0.1s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(2) { animation-delay: 0.2s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(3) { animation-delay: 0.3s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(4) { animation-delay: 0.4s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(5) { animation-delay: 0.5s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(6) { animation-delay: 0.6s; }
+.cyber-nav-menu.open .cyber-nav-link:nth-child(7) { animation-delay: 0.7s; }
