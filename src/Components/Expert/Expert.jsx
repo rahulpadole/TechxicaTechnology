@@ -176,8 +176,8 @@ const OurExpertTeam = () => {
     {
       img: web_dev,
       name: "Prajwal Nakhate",
-      role: "Senior Manager",
-      description: "As a Senior Manager at Techxica Technology, I lead and coordinate the efforts of our IT and AI teams, focusing on operational excellence, team performance, and the successful delivery of technology-driven solutions. My role also involves close collaboration with the Human Resources and Social Media departments, where I support digital engagement, talent outreach, branding, and internal communications. With a strong emphasis on execution, cross-functional alignment, and continuous improvement, I strive to contribute to a cohesive, innovative, and agile organizational environment."
+      role: "IT Director",
+      description: "As the IT Director at Techxica Technology, I oversee the strategic planning, implementation, and management of our IT infrastructure and AI initiatives. I am responsible for aligning technology operations with business goals, ensuring system reliability, cybersecurity, and continuous innovation across platforms. In addition to managing our technical roadmap, I collaborate closely with the Human Resources and Social Media teams to strengthen internal communication, digital outreach, and organizational branding. With a strong focus on leadership, execution, and cross-departmental synergy, I aim to foster a resilient, scalable, and future-ready technology environment that empowers both our teams and our vision."
     },
     
     {
