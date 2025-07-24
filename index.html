@@ -3,9 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d0221" />
+  <meta name="description" content="Techxica Technology: Disrupt the future with cutting-edge engineering, AI-powered solutions, and scalable infrastructure. Explore innovative programs and transform challenges into limitless potential." />
   <title>Techxica Technology</title>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="icon" type="image/x-icon" href="/src/assets/Logo.jpg">
+  <!-- Preconnect and preload fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rajdhani:wght@400;500&display=swap" as="style">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rajdhani:wght@400;500&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <!-- Preload critical images -->
+  <link rel="preload" href="/assets/Logo.webp" as="image">
+  <link rel="preload" href="/assets/hero1.webp" as="image">
+  <link rel="preload" href="/assets/mobileview1.webp" as="image">
+  <link rel="icon" type="image/webp" href="/assets/Logo.webp">
   <style>
     #cyber-dynamic-bg {
       position: fixed;
@@ -18,7 +28,7 @@
       overflow: hidden;
       background: linear-gradient(135deg, #ff474d 0%, #66d8efc5, #698ef5);
       background-size: 200% 200%;
-      animation: cyber-gradient 8s ease infinite;
+      animation: cyber-gradient 10s ease infinite;
     }
 
     .logo-container {
@@ -26,36 +36,34 @@
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      z-index: -9998; /* Above background but below content */
+      z-index: -9998;
     }
 
     .logo {
-      width: 380px; /* Adjust size as needed */
+      width: clamp(200px, 20vw, 300px);
       height: auto;
-      filter: opacity(0.1) blur(1px) drop-shadow(0 0 10px rgba(255, 71, 77, 0.7)); /* Added blur with glow */
-      animation: cyber-pulse 4s ease-in-out infinite; /* Subtle cyberpunk pulse */
+      filter: opacity(0.1) drop-shadow(0 0 5px rgba(255, 71, 77, 0.5));
+      animation: cyber-pulse 5s ease-in-out infinite;
     }
 
     @keyframes cyber-gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-      50% {
-        background-position: 100% 50%;
-      }
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     @keyframes cyber-pulse {
-      0%, 100% {
-        transform: scale(1);
-        opacity: 0.9;
-      }
-      50% {
-        transform: scale(1.05);
-        opacity: 1;
+      0%, 100% { transform: scale(1); opacity: 0.1; }
+      50% { transform: scale(1.03); opacity: 0.15; }
+    }
+
+    @media (max-width: 600px) {
+      .logo { width: clamp(150px, 18vw, 200px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      #cyber-dynamic-bg, .logo {
+        animation: none;
       }
     }
   </style>
@@ -63,10 +71,18 @@
 <body>
   <div id="cyber-dynamic-bg">
     <div class="logo-container">
-      <img src="/src/assets/Logo.jpg" alt="Techxica Logo" class="logo" />
+      <img
+        src="/assets/Logo.webp"
+        alt="Techxica Logo"
+        class="logo"
+        loading="lazy"
+        decoding="async"
+        width="300"
+        height="300"
+      />
     </div>
   </div>
   <div id="root"></div>
-  <script type="module" src="/src/main.jsx"></script>
+  <script type="module" src="/src/main.jsx" defer></script>
 </body>
 </html>
