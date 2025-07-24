@@ -1,98 +1,55 @@
 import { useState, useRef, useEffect } from 'react';
-import Slider from 'react-slick';
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
 import './Expert.css';
-
-// Image imports
-
-import Robo_train from "../../assets/Ajay.jpg";
-import it_head from "../../assets/IT-Head.jpg";
-import web_dev from "../../assets/Prajwal..jpg";
+import Robo_train from "../../assets/Ajay.webp";
+import it_head from "../../assets/IT-Head.webp";
+import web_dev from "../../assets/Prajwal.webp";
 
 const ProfileCard = ({ img, name, role, description }) => {
   const [expanded, setExpanded] = useState(false);
-  const [isHovered, setIsHovered] = useState(false);
-  const [contentHeight, setContentHeight] = useState('6em');
   const contentRef = useRef(null);
-  const cardRef = useRef(null);
 
   useEffect(() => {
     if (contentRef.current) {
-      setContentHeight(`${contentRef.current.scrollHeight}px`);
+      const height = expanded ? `${contentRef.current.scrollHeight}px` : '6em';
+      contentRef.current.style.height = height;
     }
   }, [expanded]);
 
-  const toggleExpand = () => {
-    setExpanded(!expanded);
-  };
-
-  useEffect(() => {
-    const card = cardRef.current;
-    if (!card) return;
-
-    const handleMouseMove = (e) => {
-      const { left, top, width, height } = card.getBoundingClientRect();
-      const x = (e.clientX - left) / width - 0.5;
-      const y = (e.clientY - top) / height - 0.5;
-      
-      card.style.setProperty('--rotate-x', `${y * 8}deg`);
-      card.style.setProperty('--rotate-y', `${-x * 8}deg`);
-    };
-
-    const handleMouseLeave = () => {
-      card.style.setProperty('--rotate-x', '0deg');
-      card.style.setProperty('--rotate-y', '0deg');
-      setIsHovered(false);
-    };
-
-    card.addEventListener('mousemove', handleMouseMove);
-    card.addEventListener('mouseleave', handleMouseLeave);
-    
-    return () => {
-      card.removeEventListener('mousemove', handleMouseMove);
-      card.removeEventListener('mouseleave', handleMouseLeave);
-    };
-  }, []);
-
   return (
-    <div 
-      ref={cardRef}
-      className={`profile-card ${isHovered ? 'hovered' : ''}`}
-      onMouseEnter={() => setIsHovered(true)}
-    >
+    <div className="profile-card">
       <div className="card-inner">
         <div className="card-front">
           <div className="image-container">
-            <img 
-              src={img} 
-              alt={`Portrait of ${name}`} 
-              className={`profile-image ${isHovered ? 'zoomed' : ''}`}
+            <img
+              src={img}
+              alt={`Portrait of ${name}`}
+              className="profile-image"
               loading="lazy"
+              decoding="async"
+              width="280"
+              height="280"
             />
             <div className="image-overlay" />
           </div>
           <div className="card-content">
             <h3 className="name">{name}</h3>
             <p className="role">{role}</p>
-            <div className="animated-border" />
           </div>
         </div>
         <div className="card-back">
           <div className="back-content">
             <h3>{name}</h3>
             <p className="role">{role}</p>
-            <div 
+            <div
               ref={contentRef}
               className={`description-container ${expanded ? 'expanded' : ''}`}
-              style={{ height: expanded ? contentHeight : '6em' }}
             >
               <p className="description">{description}</p>
             </div>
             {description.length > 100 && (
-              <button 
+              <button
                 className="read-more"
-                onClick={toggleExpand}
+                onClick={() => setExpanded(!expanded)}
                 aria-expanded={expanded}
               >
                 {expanded ? 'Read Less' : 'Read More'}
@@ -105,67 +62,7 @@ const ProfileCard = ({ img, name, role, description }) => {
   );
 };
 
-const TeamSlider = ({ title, subtitle, members }) => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1800,
-    pauseOnHover: true,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1
-        }
-      },
-      {
-        breakpoint: 768,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1
-        }
-      }
-    ]
-  };
-
-  return (
-    <div className="team-section">
-      <h3 className="team-title">{title}</h3>
-      {subtitle && <p className="team-subtitle">{subtitle}</p>}
-      <div className="slider-container">
-        <Slider {...settings}>
-          {members.map((member, index) => (
-            <div key={`team-slide-${index}`}>
-              <ProfileCard {...member} />
-            </div>
-          ))}
-        </Slider>
-      </div>
-    </div>
-  );
-};
-
-const TeamSection = ({ title, subtitle, members }) => {
-  return (
-    <div className="team-section">
-      <h3 className="team-title">{title}</h3>
-      {subtitle && <p className="team-subtitle">{subtitle}</p>}
-      <div className="team-grid">
-        {members.map((member, index) => (
-          <ProfileCard key={`${title}-${index}`} {...member} />
-        ))}
-      </div>
-    </div>
-  );
-};
-
 const OurExpertTeam = () => {
-
   const techTeamMembers = [
     {
       img: it_head,
@@ -176,10 +73,9 @@ const OurExpertTeam = () => {
     {
       img: web_dev,
       name: "Prajwal Nakhate",
-      role: "IT Director",
-      description: "As the IT Director at Techxica Technology, I oversee the strategic planning, implementation, and management of our IT infrastructure and AI initiatives. I am responsible for aligning technology operations with business goals, ensuring system reliability, cybersecurity, and continuous innovation across platforms. In addition to managing our technical roadmap, I collaborate closely with the Human Resources and Social Media teams to strengthen internal communication, digital outreach, and organizational branding. With a strong focus on leadership, execution, and cross-departmental synergy, I aim to foster a resilient, scalable, and future-ready technology environment that empowers both our teams and our vision."
+      role: "Senior Manager",
+      description: "As a Senior Manager at Techxica Technology, I lead and coordinate the efforts of our IT and AI teams, focusing on operational excellence, team performance, and the successful delivery of technology-driven solutions. My role also involves close collaboration with the Human Resources and Social Media departments, where I support digital engagement, talent outreach, branding, and internal communications. With a strong emphasis on execution, cross-functional alignment, and continuous improvement, I strive to contribute to a cohesive, innovative, and agile organizational environment."
     },
-    
     {
       img: Robo_train,
       name: "Ajay Gawande",
@@ -189,18 +85,15 @@ const OurExpertTeam = () => {
   ];
 
   return (
-    <section className="expert-section" id="expert-team">
+    <section className="expert-section" id="expert-section">
       <div className="container">
         <h2 className="section-title">Our Expert Team</h2>
         <p className="section-subtitle">Meet the talented professionals behind Techxica's success</p>
-
-        
-
-        <TeamSlider
-          title="Tech & Robotics Team"
-          subtitle="Innovators building our technological future"
-          members={techTeamMembers}
-        />
+        <div className="team-grid">
+          {techTeamMembers.map((member, index) => (
+            <ProfileCard key={`team-${index}`} {...member} />
+          ))}
+        </div>
       </div>
     </section>
   );
