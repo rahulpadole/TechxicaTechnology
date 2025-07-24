@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import "./Programs.css";
-import program_1 from "../../assets/ai_ml.webp";
-import program_2 from "../../assets/cloud_computing.webp";
-import program_3 from "../../assets/web_dev.webp";
-import program_4 from "../../assets/mobile_dev.webp";
-import program_5 from "../../assets/data_science.webp";
-import program_6 from "../../assets/cybersecurity.webp";
-import program_7 from "../../assets/devops.webp";
-import program_8 from "../../assets/blockchain.webp";
-import program_9 from "../../assets/software_architecture.webp";
+import program_1 from "../../assets/ai_ml.jpg";
+import program_2 from "../../assets/cloud_computing.jpg";
+import program_3 from "../../assets/web_dev.jpg";
+import program_4 from "../../assets/mobile_dev.jpg";
+import program_5 from "../../assets/data_science.jpg";
+import program_6 from "../../assets/cybersecurity.jpg";
+import program_7 from "../../assets/devops.jpg";
+import program_8 from "../../assets/blockchain.jpg";
+import program_9 from "../../assets/software_architecture.jpg";
 
 const programsData = [
   { img: program_1, title: "AI/ML DEVELOPMENT" },
