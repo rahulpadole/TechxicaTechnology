@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600&display=swap');
+/* Hero.css */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Rajdhani:wght@400;500&display=swap');
 
 :root {
   --cyberpunk-blue: #11b4c0;
@@ -26,7 +27,7 @@
 /* Base Hero Styles */
 .cyber-hero-container {
   width: 100%;
-  height: clamp(80vh, 100vh, 120vh);
+  height: clamp(60vh, 80vh, 100vh);
   position: relative;
   overflow: hidden;
   color: var(--cyberpunk-light);
@@ -35,7 +36,6 @@
   justify-content: center;
   text-align: center;
   isolation: isolate;
-  border-bottom: 1px solid var(--cyberpunk-blue);
 }
 
 /* Carousel Styles */
@@ -52,9 +52,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
   opacity: 0;
   transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
   will-change: opacity;
@@ -76,9 +73,8 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: 
-    linear-gradient(rgba(5, 217, 232, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(5, 217, 232, 0.05) 1px, transparent 1px);
+  background: linear-gradient(rgba(5, 217, 232, 0.05) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(5, 217, 232, 0.05) 1px, transparent 1px);
   background-size: 20px 20px;
   z-index: 2;
   pointer-events: none;
@@ -93,35 +89,32 @@
 
 .cyber-hero-title {
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(1.5rem, 4vw, 3rem);
-  font-weight: 700;
+  font-size: clamp(1.5rem, 4vw, 2.5rem);
+  font-weight: 600;
   line-height: 1.2;
-  margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+  margin-bottom: clamp(0.8rem, 2vw, 1rem);
   text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.2vw, 1.5px);
+  letter-spacing: clamp(0.5px, 0.2vw, 1px);
   text-shadow: var(--neon-glow);
-  animation: cyber-fadeInUp 800ms ease-out;
 }
 
 .cyber-hero-subtitle {
   font-family: 'Rajdhani', sans-serif;
-  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  font-size: clamp(0.8rem, 1.6vw, 1rem);
   max-width: clamp(400px, 60vw, 600px);
-  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+  margin: 0 auto clamp(1rem, 3vw, 1.5rem);
   line-height: 1.6;
   letter-spacing: 0.5px;
   text-shadow: 0 0 3px rgba(232, 32, 5, 0.5);
-  animation: cyber-fadeInUp 800ms ease-out 200ms forwards;
-  opacity: 0;
 }
 
 /* Hero Button */
 .cyber-hero-button {
   display: inline-flex;
   align-items: center;
-  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 3vw, 2rem);
+  padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.5rem);
   font-family: 'Orbitron', sans-serif;
-  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-size: clamp(0.8rem, 1.4vw, 0.9rem);
   font-weight: 600;
   background: transparent;
   color: var(--cyberpunk-yellow);
@@ -130,8 +123,6 @@
   cursor: pointer;
   box-shadow: var(--neon-glow);
   transition: var(--transition);
-  animation: cyber-fadeInUp 800ms ease-out 400ms forwards;
-  opacity: 0;
   position: relative;
   overflow: hidden;
   text-transform: uppercase;
@@ -172,13 +163,13 @@
 .cyber-carousel-indicators {
   display: flex;
   justify-content: center;
-  gap: clamp(0.5rem, 1vw, 0.75rem);
-  margin-top: clamp(1.5rem, 3vw, 2rem);
+  gap: clamp(0.4rem, 1vw, 0.6rem);
+  margin-top: clamp(1rem, 2vw, 1.5rem);
 }
 
 .cyber-indicator {
-  width: clamp(8px, 1vw, 10px);
-  height: clamp(8px, 1vw, 10px);
+  width: clamp(6px, 0.8vw, 8px);
+  height: clamp(6px, 0.8vw, 8px);
   border-radius: 0;
   background: rgba(255, 255, 255, 0.3);
   border: 1px solid var(--cyberpunk-blue);
@@ -193,68 +184,26 @@
   transform: scale(1.2);
 }
 
-/* Animations */
-@keyframes cyber-fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
 /* Responsive Adjustments */
 @media (max-width: 900px) {
   .cyber-hero-container {
-    height: clamp(70vh, 90vh, 100vh);
+    height: clamp(50vh, 70vh, 90vh);
   }
 }
 
 @media (max-width: 600px) {
   .cyber-hero-content {
-    padding: 0 clamp(0.8rem, 3vw, 1.2rem);
+    padding: 0 clamp(0.6rem, 3vw, 1rem);
   }
 
   .cyber-hero-title {
-    font-size: clamp(1.2rem, 3.5vw, 2rem);
-    margin-bottom: 0.8rem;
+    font-size: clamp(1.2rem, 3vw, 1.8rem);
+    margin-bottom: 0.6rem;
   }
 
   .cyber-hero-subtitle {
-    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+    font-size: clamp(0.7rem, 1.4vw, 0.9rem);
     max-width: clamp(300px, 80vw, 500px);
-  }
-
-  .cyber-hero-button {
-    padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.5rem);
-    font-size: clamp(0.8rem, 1.4vw, 0.9rem);
-  }
-
-  .cyber-carousel-indicators {
-    margin-top: 1.5rem;
-  }
-
-  .cyber-indicator {
-    width: 8px;
-    height: 8px;
-  }
-}
-
-@media (max-width: 400px) {
-  .cyber-hero-container {
-    height: clamp(60vh, 80vh, 90vh);
-  }
-
-  .cyber-hero-title {
-    font-size: clamp(1rem, 3vw, 1.5rem);
-    letter-spacing: 0.5px;
-  }
-
-  .cyber-hero-subtitle {
-    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
-    margin-bottom: 1.2rem;
   }
 
   .cyber-hero-button {
@@ -263,7 +212,32 @@
   }
 
   .cyber-carousel-indicators {
-    gap: 0.4rem;
+    margin-top: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .cyber-hero-container {
+    height: clamp(40vh, 60vh, 80vh);
+  }
+
+  .cyber-hero-title {
+    font-size: clamp(1rem, 2.5vw, 1.5rem);
+    letter-spacing: 0.4px;
+  }
+
+  .cyber-hero-subtitle {
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+    margin-bottom: 0.8rem;
+  }
+
+  .cyber-hero-button {
+    padding: clamp(0.3rem, 1vw, 0.5rem) clamp(0.6rem, 1.8vw, 1rem);
+    font-size: clamp(0.65rem, 1.2vw, 0.8rem);
+  }
+
+  .cyber-carousel-indicators {
+    gap: 0.3rem;
   }
 
   .cyber-indicator {
@@ -276,9 +250,5 @@
 @media (prefers-reduced-motion: reduce) {
   .cyber-carousel-slide, .cyber-hero-button, .cyber-indicator {
     transition: none;
-  }
-  .cyber-hero-title, .cyber-hero-subtitle, .cyber-hero-button {
-    animation: none;
-    opacity: 1;
   }
 }
