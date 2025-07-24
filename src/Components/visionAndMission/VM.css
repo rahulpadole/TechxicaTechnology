@@ -22,7 +22,8 @@
 
 /* ===== Base Styles ===== */
 .vm-container {
-  
+  align-items: center;
+  text-align: justify;
   max-width: 1300px;
   margin: 2rem auto;
   padding: 0 2rem;
