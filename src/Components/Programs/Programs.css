@@ -1,7 +1,7 @@
 /* Programs.css */
 
 .Prog-container {
-  padding: 2rem 4rem;
+  padding: 1rem 2rem;
   background: radial-gradient(circle at top left, #e32a49c1, #47dfdf9d, #3a0caf74);
   background-size: 400% 400%;
   animation: moveGradient 15s ease infinite;
