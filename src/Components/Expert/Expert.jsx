@@ -1,8 +1,8 @@
 import { useState, useRef, useEffect } from 'react';
 import './Expert.css';
-import Robo_train from "../../assets/Ajay.webp";
-import it_head from "../../assets/IT-Head.webp";
-import web_dev from "../../assets/Prajwal.webp";
+import Robo_train from "../../assets/Ajay.jpg";
+import it_head from "../../assets/IT-Head.jpg";
+import web_dev from "../../assets/Prajwal..jpg";
 
 const ProfileCard = ({ img, name, role, description }) => {
   const [expanded, setExpanded] = useState(false);
