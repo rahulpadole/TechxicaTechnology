@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
 import "./Programs.css";
-import program_1 from "../../assets/ai_ml.jpg";
-import program_2 from "../../assets/cloud_computing.jpg";
-import program_3 from "../../assets/web_dev.jpg";
-import program_4 from "../../assets/mobile_dev.jpg";
-import program_5 from "../../assets/data_science.jpg";
-import program_6 from "../../assets/cybersecurity.jpg";
-import program_7 from "../../assets/devops.jpg";
-import program_8 from "../../assets/blockchain.jpg";
-import program_9 from "../../assets/software_architecture.jpg";
+import program_1 from "../../assets/ai_ml.webp";
+import program_2 from "../../assets/cloud_computing.webp";
+import program_3 from "../../assets/web_dev.webp";
+import program_4 from "../../assets/mobile_dev.webp";
+import program_5 from "../../assets/data_science.webp";
+import program_6 from "../../assets/cybersecurity.webp";
+import program_7 from "../../assets/devops.webp";
+import program_8 from "../../assets/blockchain.webp";
+import program_9 from "../../assets/software_architecture.webp";
 
 const programsData = [
   { img: program_1, title: "AI/ML DEVELOPMENT" },
@@ -27,17 +27,14 @@ const Programs = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [transitionEnabled, setTransitionEnabled] = useState(true);
   const carouselRef = useRef(null);
-  const autoSlideInterval = useRef(null);
-  const isInteracting = useRef(false);
 
   useEffect(() => {
     const update = () => {
       const w = window.innerWidth;
-      const vs = w >= 1200 ? 3 : w >= 768 ? 2 : 1;
-      setVisibleSlides(vs);
+      setVisibleSlides(w >= 1200 ? 3 : w >= 768 ? 2 : 1);
     };
     update();
-    window.addEventListener("resize", update);
+    window.addEventListener("resize", update, { passive: true });
     return () => window.removeEventListener("resize", update);
   }, []);
 
@@ -70,53 +67,10 @@ const Programs = () => {
   const nextSlide = () => setCurrentIndex(i => i + 1);
   const prevSlide = () => setCurrentIndex(i => i - 1);
 
-  const startAuto = () => {
-    clearInterval(autoSlideInterval.current);
-    const t = window.innerWidth < 768 ? 1500 : 3000;
-    autoSlideInterval.current = setInterval(() => {
-      if (!isInteracting.current) nextSlide();
-    }, t);
-  };
-
-  const pauseAuto = () => {
-    isInteracting.current = true;
-    clearInterval(autoSlideInterval.current);
-  };
-
-  const resumeAuto = () => {
-    isInteracting.current = false;
-    startAuto();
-  };
-
-  useEffect(() => {
-    startAuto();
-    return () => clearInterval(autoSlideInterval.current);
-  }, [visibleSlides]);
-
-  const onTouchStart = e => {
-    pauseAuto();
-    carouselRef.current.startX = e.touches[0].clientX;
-  };
-
-  const onTouchEnd = e => {
-    const endX = e.changedTouches[0].clientX;
-    const diff = carouselRef.current.startX - endX;
-    if (diff > 50) nextSlide();
-    if (diff < -50) prevSlide();
-    resumeAuto();
-  };
-
   return (
-    <div className="Prog-container" id="programs">
-      <div
-        className="programs-page-container"
-        ref={carouselRef}
-        onTouchStart={onTouchStart}
-        onTouchEnd={onTouchEnd}
-      >
-        <button className="carousel-prev" onClick={prevSlide}>
-          &#10094;
-        </button>
+    <div className="Prog-container" id="program-section">
+      <div className="programs-page-container" ref={carouselRef}>
+        <button className="carousel-prev" onClick={prevSlide} aria-label="Previous slide">❮</button>
         <div className="programs-carousel">
           <div
             className="carousel-track"
@@ -129,7 +83,14 @@ const Programs = () => {
             {carouselData.map((p, i) => (
               <div className="program-card" key={i}>
                 <div className="program-image-wrapper">
-                  <img src={p.img} alt={p.title} />
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    loading="lazy"
+                    decoding="async"
+                    width="480"
+                    height="320"
+                  />
                   <div className="program-overlay"></div>
                 </div>
                 <div className="program-caption">
@@ -139,9 +100,7 @@ const Programs = () => {
             ))}
           </div>
         </div>
-        <button className="carousel-next" onClick={nextSlide}>
-          &#10095;
-        </button>
+        <button className="carousel-next" onClick={nextSlide} aria-label="Next slide">❯</button>
       </div>
     </div>
   );
