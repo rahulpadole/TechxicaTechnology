@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import './Navbar.css';
-import logo from '../../assets/TechLogo.png';
+import logo from '../../assets/TechLogo.webp';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = () => {
@@ -12,22 +12,15 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
 
-  useEffect(() => {
-    let scrollTimeout;
-    const handleScroll = () => {
-      if (scrollTimeout) return; // Debounce scroll events
-      scrollTimeout = setTimeout(() => {
-        setScrolled(window.scrollY > 50);
-        setAtHero(window.scrollY < 100 && location.pathname === '/');
-        scrollTimeout = null;
-      }, 100); // Debounce delay
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-      if (scrollTimeout) clearTimeout(scrollTimeout);
-    };
+  const handleScroll = useCallback(() => {
+    setScrolled(window.scrollY > 50);
+    setAtHero(window.scrollY < 100 && location.pathname === '/');
   }, [location]);
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [handleScroll]);
 
   useEffect(() => {
     setMenuOpen(false);
@@ -35,8 +28,8 @@ const Navbar = () => {
   }, [location]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : 'auto';
-    return () => { document.body.style.overflow = 'auto'; };
+    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
   }, [menuOpen]);
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
@@ -47,9 +40,8 @@ const Navbar = () => {
     } else {
       scroller.scrollTo(target, {
         duration: 500,
-        delay: 0,
         smooth: 'easeInOutQuart',
-        offset: -80
+        offset: -80,
       });
     }
     setMenuOpen(false);
@@ -58,18 +50,26 @@ const Navbar = () => {
   return (
     <nav className={`cyber-nav ${scrolled ? 'scrolled' : ''} ${menuOpen ? 'menu-open' : ''} ${atHero ? 'at-hero' : ''}`}>
       <div className="cyber-nav-container">
-        <Link 
-          to="/" 
+        <Link
+          to="/"
           className="cyber-logo-link"
           onClick={() => {
             setMenuOpen(false);
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
         >
-          <img src={logo} alt="Company Logo" className="cyber-nav-logo" />
+          <img
+            src={logo}
+            alt="Techxica Logo"
+            className="cyber-nav-logo"
+            loading="eager"
+            decoding="async"
+            width="40"
+            height="40"
+          />
         </Link>
 
-        <button 
+        <button
           className="cyber-menu-toggle"
           onClick={toggleMenu}
           aria-expanded={menuOpen}
@@ -80,7 +80,7 @@ const Navbar = () => {
 
         <div className={`cyber-nav-menu ${menuOpen ? 'open' : ''}`}>
           <div className="cyber-nav-menu-inner">
-            <button 
+            <button
               className="cyber-nav-link"
               onClick={() => {
                 setMenuOpen(false);
@@ -91,43 +91,43 @@ const Navbar = () => {
               HOME
             </button>
 
-            <button 
+            <button
               className="cyber-nav-link"
               onClick={() => handleScrollTo('about-container')}
             >
               ABOUT
             </button>
 
-            <button 
+            <button
               className="cyber-nav-link"
               onClick={() => handleScrollTo('program-section')}
             >
               PROGRAM
             </button>
 
-            <button 
+            <button
               className="cyber-nav-link"
               onClick={() => handleScrollTo('gallery')}
             >
               GALLERY
             </button>
 
-            <Link 
-              to="/careers" 
+            <Link
+              to="/careers"
               className="cyber-nav-link"
               onClick={() => setMenuOpen(false)}
             >
               CAREER
             </Link>
 
-            <button 
+            <button
               className="cyber-nav-link"
               onClick={() => handleScrollTo('expert-section')}
             >
               OUR TEAM
             </button>
 
-            <button 
+            <button
               className="cyber-nav-button"
               onClick={() => handleScrollTo('contact')}
             >
