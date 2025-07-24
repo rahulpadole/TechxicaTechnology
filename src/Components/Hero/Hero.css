@@ -1,257 +1,284 @@
-/* VM.css */
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&family=Rajdhani:wght@400;500;600&display=swap');
 
 :root {
-  /* Lighter Cyberpunk Color Palette */
-  --electric-blue: #00f7ff;
-  --neon-green: #00ffb3;
-  --violet: #a86bff;
-  --hot-pink: #ff2d9e;
-  --cyber-yellow: #fff200;
-  
-  /* Base Colors */
-  --dark-bg: rgba(31, 31, 46, 0.9);
-  --darker-bg: rgba(20, 20, 40, 0.95);
-  --light-text: #f0f9ff;
-  
-  /* Effects */
-  --blue-glow: 0 0 10px rgba(0, 247, 255, 0.7);
-  --green-glow: 0 0 10px rgba(0, 255, 179, 0.7);
-  --transition: all 0.4s cubic-bezier(0.65, 0, 0.35, 1);
+  --cyberpunk-blue: #11b4c0;
+  --cyberpunk-pink: #ff2a6d;
+  --cyberpunk-yellow: #f9f002;
+  --cyberpunk-purple: #d300c5;
+  --cyberpunk-dark: #0d0221;
+  --cyberpunk-dark-2: #1a1a2e;
+  --cyberpunk-light: #e2f3f4;
+  --neon-glow: 0 0 5px var(--cyberpunk-blue);
+  --neon-glow-pink: 0 0 5px var(--cyberpunk-pink);
+  --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* ===== Base Styles ===== */
-.vm-container {
-  align-items: center;
-  text-align: justify;
-  max-width: 1300px;
-  margin: clamp(1rem, 5vw, 2rem) auto;
-  padding: 0 clamp(0.8rem, 4vw, 2rem);
-  font-family: 'Orbitron', sans-serif;
-  box-sizing: border-box;
+/* Font Optimization */
+@font-face {
+  font-family: 'Orbitron';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Rajdhani';
+  font-display: swap;
 }
 
-/* ===== Cards Container ===== */
-.vm-cards-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(clamp(280px, 45vw, 320px), 1fr));
-  gap: clamp(1.5rem, 4vw, 3rem);
-  align-items: stretch;
-  text-align: justify;
-}
-
-/* ===== Card Styles ===== */
-.vm-card {
+/* Base Hero Styles */
+.cyber-hero-container {
+  width: 100%;
+  height: clamp(80vh, 100vh, 120vh);
   position: relative;
-  border-radius: 8px;
   overflow: hidden;
-  background: var(--dark-bg);
-  backdrop-filter: blur(0px);
-  border: 1px solid var(--electric-blue);
-  box-shadow: 
-    0 0 25px rgba(0, 247, 255, 0.3),
-    inset 0 0 15px rgba(0, 247, 255, 0.2);
+  color: var(--cyberpunk-light);
   display: flex;
-  flex-direction: column;
-  min-height: clamp(250px, 40vh, 300px);
-  transition: var(--transition);
-  padding: 2px;
-  box-sizing: border-box;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  isolation: isolate;
+  border-bottom: 1px solid var(--cyberpunk-blue);
 }
 
-.mission-card {
-  border-color: var(--neon-green);
-  box-shadow: 
-    0 0 25px rgba(0, 255, 179, 0.3),
-    inset 0 0 15px rgba(0, 255, 179, 0.2);
-}
-
-.vm-card::before {
-  content: '';
+/* Carousel Styles */
+.cyber-carousel {
   position: absolute;
+  width: 100%;
+  height: 100%;
   top: 0;
   left: 0;
-  right: 0;
-  height: 3px;
-  background: linear-gradient(90deg, transparent, var(--electric-blue), transparent);
+  z-index: -1;
 }
 
-.mission-card::before {
-  background: linear-gradient(90deg, transparent, var(--neon-green), transparent);
+.cyber-carousel-slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 800ms cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: opacity;
 }
 
-.vm-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 
-    0 15px 40px rgba(0, 247, 255, 0.5),
-    inset 0 0 20px rgba(0, 247, 255, 0.3);
-}
-
-.mission-card:hover {
-  box-shadow: 
-    0 15px 40px rgba(0, 255, 179, 0.5),
-    inset 0 0 20px rgba(0, 255, 179, 0.3);
-}
-
-/* ===== Label Styles ===== */
-.vm-card-label {
-  position: relative;
-  margin: clamp(1rem, 3vw, 2rem) auto clamp(0.8rem, 2vw, 1.5rem);
-  display: inline-block;
-  background: var(--darker-bg);
-  padding: clamp(0.5rem, 2vw, 0.8rem) clamp(1rem, 3vw, 2rem);
-  border-radius: 4px;
-  font-weight: 700;
-  font-size: clamp(1rem, 2.5vw, 1.3rem);
-  color: var(--electric-blue);
-  font-family: 'Orbitron', sans-serif;
-  text-transform: uppercase;
-  letter-spacing: clamp(1px, 0.5vw, 3px);
-  border: 1px solid var(--electric-blue);
-  box-shadow: var(--blue-glow);
-  text-shadow: var(--blue-glow);
-  transition: var(--transition);
-  z-index: 2;
-  max-width: 90%;
-  overflow-wrap: break-word;
-}
-
-.mission-card .vm-card-label {
-  color: var(--neon-green);
-  border-color: var(--neon-green);
-  box-shadow: var(--green-glow);
-  text-shadow: var(--green-glow);
-}
-
-.vm-card-label:hover {
-  transform: scale(1.05) translateY(-3px);
-}
-
-/* ===== Card Content ===== */
-.vm-card-content {
-  padding: 0 clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-}
-
-.vm-card-content p {
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
-  line-height: 1.6;
-  color: var(--light-text);
-  margin-bottom: clamp(1rem, 3vw, 2rem);
-  font-weight: 500;
-  overflow-wrap: break-word;
-}
-
-/* ===== Icon Styles ===== */
-.vm-card-icon {
-  font-size: clamp(2rem, 5vw, 3rem);
-  margin-top: auto;
-  text-align: right;
-  opacity: 0.9;
-  transition: var(--transition);
-  filter: drop-shadow(0 0 8px var(--electric-blue));
-}
-
-.mission-card .vm-card-icon {
-  filter: drop-shadow(0 0 8px var(--neon-green));
-}
-
-.vm-card-icon:hover {
-  transform: scale(1.2);
+.cyber-carousel-slide.active {
   opacity: 1;
 }
 
-/* ===== Animations ===== */
-@keyframes pulse {
-  0% { box-shadow: 0 0 10px var(--electric-blue); }
-  50% { box-shadow: 0 0 20px var(--electric-blue); }
-  100% { box-shadow: 0 0 10px var(--electric-blue); }
+.cyber-carousel-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to top, rgba(13, 2, 33, 0.5), rgba(13, 2, 33, 0.7));
+  z-index: 1;
 }
 
-/* ===== Responsive Design ===== */
-@media (max-width: 1200px) {
-  .vm-cards-container {
-    gap: clamp(1.5rem, 3vw, 2.5rem);
+.cyber-grid-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(rgba(5, 217, 232, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(5, 217, 232, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* Hero Content */
+.cyber-hero-content {
+  max-width: clamp(600px, 80vw, 1000px);
+  padding: 0 clamp(1rem, 4vw, 2rem);
+  z-index: 3;
+}
+
+.cyber-hero-title {
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: clamp(0.8rem, 2vw, 1.2rem);
+  text-transform: uppercase;
+  letter-spacing: clamp(1px, 0.2vw, 1.5px);
+  text-shadow: var(--neon-glow);
+  animation: cyber-fadeInUp 800ms ease-out;
+}
+
+.cyber-hero-subtitle {
+  font-family: 'Rajdhani', sans-serif;
+  font-size: clamp(0.9rem, 1.8vw, 1.1rem);
+  max-width: clamp(400px, 60vw, 600px);
+  margin: 0 auto clamp(1.5rem, 3vw, 2rem);
+  line-height: 1.6;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 3px rgba(232, 32, 5, 0.5);
+  animation: cyber-fadeInUp 800ms ease-out 200ms forwards;
+  opacity: 0;
+}
+
+/* Hero Button */
+.cyber-hero-button {
+  display: inline-flex;
+  align-items: center;
+  padding: clamp(0.6rem, 2vw, 0.8rem) clamp(1.5rem, 3vw, 2rem);
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(0.9rem, 1.5vw, 1rem);
+  font-weight: 600;
+  background: transparent;
+  color: var(--cyberpunk-yellow);
+  border: 2px solid var(--cyberpunk-yellow);
+  border-radius: 0;
+  cursor: pointer;
+  box-shadow: var(--neon-glow);
+  transition: var(--transition);
+  animation: cyber-fadeInUp 800ms ease-out 400ms forwards;
+  opacity: 0;
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.cyber-hero-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(249, 240, 2, 0.2), transparent);
+  transition: var(--transition);
+}
+
+.cyber-hero-button:hover {
+  background: rgba(249, 240, 2, 0.1);
+  transform: translateY(-3px);
+  box-shadow: 0 0 10px var(--cyberpunk-yellow);
+}
+
+.cyber-hero-button:hover::before {
+  left: 100%;
+}
+
+.cyber-button-icon {
+  margin-left: 0.5rem;
+  transition: transform 300ms ease;
+}
+
+.cyber-hero-button:hover .cyber-button-icon {
+  transform: translateX(3px);
+}
+
+/* Carousel Indicators */
+.cyber-carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: clamp(0.5rem, 1vw, 0.75rem);
+  margin-top: clamp(1.5rem, 3vw, 2rem);
+}
+
+.cyber-indicator {
+  width: clamp(8px, 1vw, 10px);
+  height: clamp(8px, 1vw, 10px);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--cyberpunk-blue);
+  cursor: pointer;
+  padding: 0;
+  transition: var(--transition);
+}
+
+.cyber-indicator:hover, .cyber-indicator.active {
+  background: var(--cyberpunk-blue);
+  box-shadow: var(--neon-glow);
+  transform: scale(1.2);
+}
+
+/* Animations */
+@keyframes cyber-fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
   }
 }
 
+/* Responsive Adjustments */
 @media (max-width: 900px) {
-  .vm-cards-container {
-    grid-template-columns: 1fr;
-    gap: clamp(1.2rem, 3vw, 2rem);
+  .cyber-hero-container {
+    height: clamp(70vh, 90vh, 100vh);
   }
 }
 
 @media (max-width: 600px) {
-  .vm-container {
-    padding: 0 clamp(0.6rem, 3vw, 1rem);
-    margin: clamp(1.5rem, 4vw, 2rem) auto;
+  .cyber-hero-content {
+    padding: 0 clamp(0.8rem, 3vw, 1.2rem);
   }
 
-  .vm-card {
-    min-height: clamp(220px, 35vh, 280px);
+  .cyber-hero-title {
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
+    margin-bottom: 0.8rem;
   }
 
-  .vm-card-content {
-    padding: 0 clamp(0.8rem, 3vw, 1.5rem) clamp(0.8rem, 3vw, 1.5rem);
+  .cyber-hero-subtitle {
+    font-size: clamp(0.8rem, 1.6vw, 0.95rem);
+    max-width: clamp(300px, 80vw, 500px);
   }
 
-  .vm-card-label {
-    font-size: clamp(0.9rem, 2.2vw, 1.2rem);
-    padding: clamp(0.4rem, 1.5vw, 0.6rem) clamp(0.8rem, 2.5vw, 1.8rem);
-    letter-spacing: clamp(1px, 0.4vw, 2px);
+  .cyber-hero-button {
+    padding: clamp(0.5rem, 1.5vw, 0.7rem) clamp(1rem, 2.5vw, 1.5rem);
+    font-size: clamp(0.8rem, 1.4vw, 0.9rem);
   }
 
-  .vm-card-content p {
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
+  .cyber-carousel-indicators {
+    margin-top: 1.5rem;
   }
 
-  .vm-card-icon {
-    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+  .cyber-indicator {
+    width: 8px;
+    height: 8px;
   }
 }
 
 @media (max-width: 400px) {
-  .vm-container {
-    padding: 0 clamp(0.5rem, 2vw, 0.8rem);
+  .cyber-hero-container {
+    height: clamp(60vh, 80vh, 90vh);
   }
 
-  .vm-card {
-    min-height: clamp(200px, 30vh, 250px);
+  .cyber-hero-title {
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    letter-spacing: 0.5px;
   }
 
-  .vm-card-label {
-    font-size: clamp(0.85rem, 2vw, 1rem);
-    padding: clamp(0.3rem, 1.2vw, 0.5rem) clamp(0.6rem, 2vw, 1.2rem);
-    letter-spacing: clamp(0.8px, 0.3vw, 1.5px);
-    margin: clamp(0.8rem, 2vw, 1.5rem) auto clamp(0.5rem, 1.5vw, 1rem);
+  .cyber-hero-subtitle {
+    font-size: clamp(0.7rem, 1.5vw, 0.85rem);
+    margin-bottom: 1.2rem;
   }
 
-  .vm-card-content {
-    padding: 0 clamp(0.6rem, 2vw, 1rem) clamp(0.6rem, 2vw, 1rem);
+  .cyber-hero-button {
+    padding: clamp(0.4rem, 1.2vw, 0.6rem) clamp(0.8rem, 2vw, 1.2rem);
+    font-size: clamp(0.7rem, 1.3vw, 0.85rem);
   }
 
-  .vm-card-content p {
-    font-size: clamp(0.8rem, 1.6vw, 0.9rem);
+  .cyber-carousel-indicators {
+    gap: 0.4rem;
   }
 
-  .vm-card-icon {
-    font-size: clamp(1.6rem, 4vw, 2.2rem);
+  .cyber-indicator {
+    width: 6px;
+    height: 6px;
   }
 }
 
 /* Optimize for low-motion devices */
 @media (prefers-reduced-motion: reduce) {
-  .vm-card, .vm-card-label, .vm-card-icon {
+  .cyber-carousel-slide, .cyber-hero-button, .cyber-indicator {
     transition: none;
   }
-}
-
-/* Fallback for browsers that don't support backdrop-filter */
-@supports not (backdrop-filter: blur(0px)) {
-  .vm-card {
-    background: var(--dark-bg);
+  .cyber-hero-title, .cyber-hero-subtitle, .cyber-hero-button {
+    animation: none;
+    opacity: 1;
   }
 }
