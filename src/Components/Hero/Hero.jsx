@@ -23,7 +23,7 @@ const Hero = () => {
   const handleResize = useCallback(() => {
     const timeout = setTimeout(() => {
       setIsMobile(window.innerWidth < 768);
-    }, 100);
+    }, 150); // Increased debounce time for performance
     return () => clearTimeout(timeout);
   }, []);
 
@@ -37,7 +37,7 @@ const Hero = () => {
 
     const interval = setInterval(() => {
       setCurrent((prev) => (prev + 1) % images.desktop.length);
-    }, 4000); // Increased interval to 4s for performance
+    }, 5000); // Increased to 5s to reduce main-thread work
 
     return () => clearInterval(interval);
   }, [isHovered]);
@@ -61,20 +61,45 @@ const Hero = () => {
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >
-        {currentImages.map((src, index) => (
-          <picture key={index}>
-            <source srcSet={src} type="image/webp" />
-            <img
-              src={src}
-              alt={`Hero slide ${index + 1}`}
-              className={`cyber-carousel-slide ${index === current ? "active" : ""}`}
-              loading={index === 0 && current === 0 ? "eager" : "lazy"}
-              decoding="async"
-              style={{ width: "100%", height: "100%", objectFit: "cover" }}
-              aria-hidden={index !== current}
-            />
-          </picture>
-        ))}
+        <picture>
+          <source
+            srcSet={`${currentImages[current]} 1x, ${currentImages[current].replace(".webp", "-2x.webp")} 2x`}
+            type="image/webp"
+            media={isMobile ? "(max-width: 768px)" : "(min-width: 769px)"}
+          />
+          <img
+            src={currentImages[current]}
+            alt={`Hero slide ${current + 1}`}
+            className="cyber-carousel-slide active"
+            loading="eager"
+            decoding="async"
+            width="1920"
+            height="1080"
+            style={{ width: "100%", height: "100%", objectFit: "cover" }}
+          />
+        </picture>
+        {currentImages.map((src, index) =>
+          index !== current ? (
+            <picture key={index}>
+              <source
+                srcSet={`${src} 1x, ${src.replace(".webp", "-2x.webp")} 2x`}
+                type="image/webp"
+                media={isMobile ? "(max-width: 768px)" : "(min-width: 769px)"}
+              />
+              <img
+                src={src}
+                alt={`Hero slide ${index + 1}`}
+                className="cyber-carousel-slide"
+                loading="lazy"
+                decoding="async"
+                width="1920"
+                height="1080"
+                style={{ width: "100%", height: "100%", objectFit: "cover" }}
+                aria-hidden="true"
+              />
+            </picture>
+          ) : null
+        )}
         <div className="cyber-carousel-overlay" />
         <div className="cyber-grid-overlay" />
       </div>
