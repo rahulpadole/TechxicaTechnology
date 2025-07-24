@@ -1,13 +1,13 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./Hero.css";
-import hero1 from "../../assets/hero1.webp";
-import hero2 from "../../assets/hero2.webp";
-import hero3 from "../../assets/hero3.webp";
-import hero4 from "../../assets/robotic_3_hand.webp";
-import hero1Mobile from "./mobileview1.webp";
-import hero2Mobile from "./mobileview2.webp";
-import hero3Mobile from "./mobileview3.webp";
-import hero4Mobile from "./mobileview4.webp";
+import hero1 from "../../assets/hero1.jpg";
+import hero2 from "../../assets/hero2.jpg";
+import hero3 from "../../assets/hero3.jpg";
+import hero4 from "../../assets/robotic_3_hand.jpg";
+import hero1Mobile from "./mobileview1.jpg";
+import hero2Mobile from "./mobileview2.jpg";
+import hero3Mobile from "./mobileview3.jpg";
+import hero4Mobile from "./mobileview4.jpg";
 
 const images = {
   desktop: [hero1, hero2, hero3, hero4],
