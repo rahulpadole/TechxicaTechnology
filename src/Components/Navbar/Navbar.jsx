@@ -2,7 +2,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { scroller } from 'react-scroll';
 import './Navbar.css';
-import logo from '../../assets/TechLogo.webp';
+import logo from '../../assets/TechLogo.png';
 import { FiMenu, FiX } from 'react-icons/fi';
 
 const Navbar = () => {
